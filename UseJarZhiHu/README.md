@@ -25,5 +25,31 @@ java -jar welcome.jar
 java -cp welcome.jar com.imooc.jardemo1.Welcome		//Work too
 ``
 
+## 多个jar之间存在调用关系
+```
+////Create shared library
+//cd UseJarZhiHu\jardemo1\src
+javac com/imooc/jardemo1/impl/Teacher.java -d target2/
+cd target2
+jar -cvf teacher.jar *
+copy teacher.jar ..\..\..\jardemo2\lib\
+
+
+//cd sample\UseJarZhiHu\jardemo2\src
+javac -cp ../lib/teacher.jar com/imooc/jardemo2/Welcome.java -d target
+cd target
+//!!!! ";." !!!!必须包含所有的jar
+java -cp ../../lib/teacher.jar;.  com.imooc.jardemo2.Welcome
+java -cp ../../lib/teacher.jar;.  com.imooc.jardemo2.Welcome
+
+////在target里打jar包
+md META-INF
+copy ..\..\..\jardemo1\src\META-INF\MANIFEST.MF .\META-INF\
+//modify MANIFEST.MF, "jardemo2"
+jar -cvfm welcome.jar META-INF/MANIFEST.MF *
+//!!!! must include myself: welcome.jar, ;;;; 必须包含所有的!!!!
+java -cp welcome.jar;../../lib/teacher.jar com.imooc.jardemo2.Welcome
+
+
 ## checkout the whole Git on windows
 ```

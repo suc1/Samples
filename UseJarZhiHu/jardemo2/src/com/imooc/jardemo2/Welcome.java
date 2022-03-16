@@ -1,4 +1,4 @@
-package com.imooc.jardemo1; 
+package com.imooc.jardemo2; 
 import com.imooc.jardemo1.impl.Teacher; 
 
 public class Welcome 
