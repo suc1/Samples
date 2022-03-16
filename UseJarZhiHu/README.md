@@ -49,7 +49,14 @@ copy ..\..\..\jardemo1\src\META-INF\MANIFEST.MF .\META-INF\
 jar -cvfm welcome.jar META-INF/MANIFEST.MF *
 //!!!! must include myself: welcome.jar, ;;;; 必须包含所有的!!!!
 java -cp welcome.jar;../../lib/teacher.jar com.imooc.jardemo2.Welcome
+//Add "Main-Class"	????
+java -cp welcome.jar;../../lib/teacher.jar
+//上面是库和自己的代码独立, 分别打包
 
+////Class-Path, 把库和自己的代码打成一个包???
+//modify MANIFEST.MF, "Class-Path"
+jar -cvfm welcome.jar META-INF/MANIFEST.MF *
+java -jar welcome.jar	//????
 
 ## checkout the whole Git on windows
 ```
