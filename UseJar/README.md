@@ -9,16 +9,19 @@ jar -cvf student.jar *
 copy student.jar ..\..\..\JavaApp\lib\
 
 //cd sample\UseJar\JavaApp\src>
+////demo.java use "System.out.printf"
 javac -cp ../lib/student.jar com/softgold/demo.java -d target
 cd target
 java com/softgold/demo
 java com.softgold.demo
 
-javac -cp ../lib/student.jar com/softgold/demo.java
+////demo.java use "Student"
+javac -cp ../lib/student.jar com/softgold/demo.java -d target
+cd target
+java -cp ../../lib/student.jar;. com.softgold.demo
+//But fail in vscode terminical
 
+//Main-Class & Class-Path ignore????
 jar -cvfm demo.jar META-INF/MANIFEST.MF *
-
-//why fail???
-java -jar demo.jar
-java -cp ../../lib/student.jar -jar demo.jar
+java -cp demo.jar;../../lib/student.jar com.softgold.demo
 ```
