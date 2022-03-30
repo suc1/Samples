@@ -1,3 +1,5 @@
+#ifndef Q_MOC_RUN
+
 #ifndef TELEOP_PAD_H
 #define TELEOP_PAD_H
  
@@ -66,3 +68,5 @@ protected:
 } // end namespace rviz_plugin_tutorials
  
 #endif // TELEOP_PANEL_H
+
+#endif

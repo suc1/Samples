@@ -10,7 +10,7 @@
 #include <geometry_msgs/Twist.h>
 #include <QDebug>
  
-#include "teleop_pad.h"
+#include "rviz_telop_commander/teleop_pad.h"
  
 namespace rviz_telop_commander
 {
