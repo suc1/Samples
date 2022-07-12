@@ -1,0 +1,18 @@
+git init
+git config core.sparsecheckout true
+echo apArchitect/ >> .git/info/sparse-checkout
+git remote add -f origin http://192.168.3.82:3000/csu/sample.git
+git pull origin master
+
+cd ~/catkin_ws/src/apArchitect/
+
+1. Home2数据的产生
+catkin_create_pkg  home2data_generate  std_msgs  rospy  roscpp
+
+///Creating a msg       http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
+roscd home2data_generate
+mkdir msg
+cd msg
+gedit message1.msg
+    time pubTime
+    uint32 count
