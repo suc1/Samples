@@ -1,9 +1,9 @@
 #include "ros/ros.h"
-#include "std_msgs/String.h"
+#include "home2data_generate/message1.h"
 
-void callback(const std_msgs::String::ConstPtr& msg)
+void callback(const home2data_generate::message1ConstPtr& msg)
 {
-    ROS_INFO("Receive: [%s]", msg->data.c_str());
+    ROS_INFO("Receive[%d]: [%d].[%d]", msg->count, msg->pubTime.sec, msg->pubTime.nsec);
 }
 
 int main(int argc, char **argv)

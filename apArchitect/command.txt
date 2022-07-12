@@ -18,3 +18,5 @@ gedit message1.msg
     uint32 count
 
 ///Writing a Simple Publisher and Subscriber    http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29
+rosrun home2data_generate sender
+rosrun home2data_generate receiver
