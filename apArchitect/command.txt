@@ -16,3 +16,5 @@ cd msg
 gedit message1.msg
     time pubTime
     uint32 count
+
+///Writing a Simple Publisher and Subscriber    http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29

@@ -51,8 +51,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
    message1.msg
-#   Message2.msg
- )
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -72,7 +71,7 @@ add_message_files(
 generate_messages(
    DEPENDENCIES
    std_msgs
-# )
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -104,10 +103,10 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES home2data_generate
-   CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
-   DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES home2data_generate
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+  DEPENDS system_lib
 )
 
 ###########
@@ -117,7 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -134,7 +133,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/home2data_generate_node.cpp)
+add_executable(sender   src/sender.cpp)
+add_executable(receiver src/receiver.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -144,12 +144,16 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(sender   ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(sender
+   ${catkin_LIBRARIES}
+ )
+target_link_libraries(receiver
+ ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
