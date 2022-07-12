@@ -20,3 +20,8 @@ gedit message1.msg
 ///Writing a Simple Publisher and Subscriber    http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29
 rosrun home2data_generate sender
 rosrun home2data_generate receiver
+
+///Home2数据的产生.txt
+rosbag record -O su /send_topic
+rosbag info su.bag
+rosbag play su.bag
