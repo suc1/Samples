@@ -12,6 +12,7 @@
 
 #include "D:/study/cpp-httplib/httplib.h"
 //https://github.com/yhirose/cpp-httplib.git
+#include "BigFile.h"
 
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
 #undef CPPHTTPLIB_OPENSSL_SUPPORT
@@ -75,6 +76,8 @@ std::string log(const Request &req, const Response &res) {
 
 void checkFileStatus(const Request& req, Response& res) {
     std::string hashFileName = req.get_param_value("hash");
+    std::string length = req.get_param_value("length");
+    std::string chunkSize = req.get_param_value("chunkSize");
     //秒传
     //断点续传
     //res.set_content("id=" + "abc", "text/plain");

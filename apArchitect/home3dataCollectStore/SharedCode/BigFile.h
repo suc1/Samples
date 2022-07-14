@@ -27,6 +27,7 @@ public:
 	///Server=Write
 	bool WriteChunk(const std::string& fileHash, int chunkNo);
 public:
+	std::string m_fileName;
 	struct stat m_stat;
 private:
 	std::fstream m_file;

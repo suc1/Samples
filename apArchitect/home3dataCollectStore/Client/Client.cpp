@@ -6,8 +6,11 @@
 //
 
 #include <iostream>
+
 #include "D:/study/cpp-httplib/httplib.h"
 //https://github.com/yhirose/cpp-httplib.git
+
+#include "BigFile.h"
 
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
 #undef CPPHTTPLIB_OPENSSL_SUPPORT
@@ -17,10 +20,6 @@
 #define CA_CERT_FILE "./ca-bundle.crt"
 
 using namespace std;
-
-string GetFileHash(const string& fileName) {
-    return "123abc";
-}
 
 int main(void) {
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
@@ -36,9 +35,11 @@ int main(void) {
     //cli.set_keep_alive(true);
     //cli.set_connection_timeout(100);
 
-    //ToDo: "/BigFile?" + GetFileHash("1.data")
-    string checkFileStatus = "/BigFile?hash=" + GetFileHash("1.data");
-    auto res = cli.Get(checkFileStatus.c_str());
+    BigFile bg(R"(D:\sample\apArchitect\home3dataCollectStore\Client\Client.cpp)", true);
+    char buf[512];
+    snprintf(buf, sizeof(buf), "/BigFile?hash=%s&length=%d&chunkSize=%d", bg.HashFileContent().c_str(), bg.m_stat.st_size, bg.m_chunkSize);
+    puts(buf);
+    auto res = cli.Get(buf);
     if (res == nullptr) return -1;
 
     cout << res->status << endl;
