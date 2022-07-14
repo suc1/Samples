@@ -18,30 +18,32 @@
 
 using namespace std;
 
+string GetFileHash(const string& fileName) {
+    return "123abc";
+}
+
 int main(void) {
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
-  httplib::SSLClient cli("localhost", 8080);
-  // httplib::SSLClient cli("google.com");
-  // httplib::SSLClient cli("www.youtube.com");
-  cli.set_ca_cert_path(CA_CERT_FILE);
-  cli.enable_server_certificate_verification(true);
+    httplib::SSLClient cli("localhost", 8080);
+    //httplib::SSLClient cli("google.com");
+    //httplib::SSLClient cli("www.youtube.com");
+    cli.set_ca_cert_path(CA_CERT_FILE);
+    cli.enable_server_certificate_verification(true);
 #else
-  httplib::Client cli("localhost", 8080);
+    httplib::Client cli("localhost", 8080);
 #endif
 
-  if (auto res = cli.Get("/hi")) {
+    //cli.set_keep_alive(true);
+    //cli.set_connection_timeout(100);
+
+    //ToDo: "/BigFile?" + GetFileHash("1.data")
+    string checkFileStatus = "/BigFile?hash=" + GetFileHash("1.data");
+    auto res = cli.Get(checkFileStatus.c_str());
+    if (res == nullptr) return -1;
+
     cout << res->status << endl;
     cout << res->get_header_value("Content-Type") << endl;
     cout << res->body << endl;
-  } else {
-    cout << "error code: " << res.error() << std::endl;
-#ifdef CPPHTTPLIB_OPENSSL_SUPPORT
-    auto result = cli.get_openssl_verify_result();
-    if (result) {
-      cout << "verify error: " << X509_verify_cert_error_string(result) << endl;
-    }
-#endif
-  }
 
-  return 0;
+    return 0;
 }
