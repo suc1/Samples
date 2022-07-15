@@ -36,14 +36,21 @@ int main(void) {
     //cli.set_connection_timeout(100);
 
     BigFile bg(R"(D:\sample\apArchitect\home3dataCollectStore\Client\Client.cpp)", true);
+    string hashParam = bg.HashFileContent();
+    hashParam = httplib::detail::encode_query_param(hashParam);
     char buf[512];
-    snprintf(buf, sizeof(buf), "/BigFile?hash=%s&length=%d&chunkSize=%d", bg.HashFileContent().c_str(), bg.m_stat.st_size, bg.m_chunkSize);
-    puts(buf);
-    auto res = cli.Get(buf);
+    snprintf(buf, sizeof(buf), "/BigFile?hash=%s&length=%d&chunkSize=%d", hashParam.c_str(), bg.m_stat.st_size, bg.m_chunkSize);
+     auto res = cli.Get(buf);
     if (res == nullptr) return -1;
+    if(res->status!=200) return -1;
+
+    //httplib::Headers headers = { {"StartPoint", "345"} };
+    //int pos = res->get_header_value<int>(headers, "StartPoint");
+    //cout << "pos=" << pos << endl;
+
 
     cout << res->status << endl;
-    cout << res->get_header_value("Content-Type") << endl;
+    cout << res->get_header_value("StartPoint") << endl;
     cout << res->body << endl;
 
     return 0;

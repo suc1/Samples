@@ -28,6 +28,7 @@ private:
 private:
 	ControlFile(const std::string& fileHash, uint64_t length, uint32_t	chunkSize);
 	~ControlFile();
+
 	bool SaveChunk(const std::string& fileHash);
 	static inline std::string FileName(const std::string& fileHash) {
 		std::string fileName(fileHash + ".conf");
@@ -36,6 +37,7 @@ private:
 
 public:
 	static ControlFile* Instance(const std::string& fileHash, uint64_t length=0, uint32_t	chunkSize=0);
+	static void ExitInstance();
 	int StartPoint(const std::string& fileHash);
 	bool SaveChunk(const std::string& fileHash, int no);
 };

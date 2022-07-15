@@ -8,6 +8,7 @@ using namespace std;
 
 ControlFile* ControlFile::m_pInst = nullptr;
 
+//ToDo: 避免重复打开关闭文件？Flush
 ControlFile::ControlFile(const std::string& fileHash, uint64_t length, uint32_t	chunkSize ) {
 	struct stat stat1;
 	string fileName( FileName(fileHash) );
@@ -60,6 +61,11 @@ ControlFile* ControlFile::Instance(const std::string& fileHash, uint64_t length/
 	ControlFile::m_pInst = new ControlFile(fileHash, length, chunkSize);
 	return ControlFile::m_pInst;
 }
+
+void ControlFile::ExitInstance() {
+	delete ControlFile::m_pInst;
+}
+
 int ControlFile::StartPoint(const std::string& fileHash) {
 	for (uint32_t i = 0; i < m_pRec->chunkSum; ++i) {
 		if (m_pRec->flag[i] != true) return i;

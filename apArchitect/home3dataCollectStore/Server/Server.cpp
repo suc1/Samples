@@ -13,6 +13,7 @@
 #include "D:/study/cpp-httplib/httplib.h"
 //https://github.com/yhirose/cpp-httplib.git
 #include "BigFile.h"
+#include "BigFileServer.h"
 
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
 #undef CPPHTTPLIB_OPENSSL_SUPPORT
@@ -74,15 +75,6 @@ std::string log(const Request &req, const Response &res) {
     return s;
 }
 
-void checkFileStatus(const Request& req, Response& res) {
-    std::string hashFileName = req.get_param_value("hash");
-    std::string length = req.get_param_value("length");
-    std::string chunkSize = req.get_param_value("chunkSize");
-    //秒传
-    //断点续传
-    //res.set_content("id=" + "abc", "text/plain");
-}
-
 int main(void) {
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
     SSLServer svr(SERVER_CERT_FILE, SERVER_PRIVATE_KEY_FILE);
@@ -95,11 +87,12 @@ int main(void) {
         return -1;
     }
 
-    //svr.set_keep_alive_max_count(2); // Default is 5
-    //svr.set_keep_alive_timeout(10);  // Default is 5
+    svr.set_keep_alive_max_count(2); // Default is 5
+    svr.set_keep_alive_timeout(10);  // Default is 5
 
-    svr.Get("/BigFile", [](const Request& req, Response& res) {
-        checkFileStatus(req, res);
+    BigFileServer bg;
+    svr.Get("/BigFile", [&](const Request& req, Response& res) {
+        bg.checkFileStatus(req, res);
         });
 
     svr.Get("/", [=](const Request & /*req*/, Response &res) {

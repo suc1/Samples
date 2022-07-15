@@ -67,8 +67,7 @@ std::string BigFile::HashFileContent()
 	MD5 md5Class;
 
 	for (int i = 0; i < m_stat.st_size; ) {
-		int readLen = m_stat.st_size - i;
-		if (readLen > sizeof(buf)) readLen = sizeof(buf);
+		int readLen = GetReadWriteLen(i, sizeof(buf));
 		bg.read(buf, readLen);
 
 		md5Class.add(buf, readLen);
@@ -92,11 +91,19 @@ std::unique_ptr<char> BigFile::ReadChunk(int chunkNo)
 {
 	//std::unique_ptr<char*> ret = std::make_unique< char[] >(m_chunkSize);
 	std::unique_ptr<char> ret ( new char[m_chunkSize] );
+	int pos = chunkNo * m_chunkSize;
+	m_file.seekg(pos);
+	pos = GetReadWriteLen(pos);
+	m_file.read(ret.get(), pos);
 	return std::move(ret);
 }
 
 //Server=Write
-bool BigFile::WriteChunk(const string& fileHash, int chunkNo)
+bool BigFile::WriteChunk(int chunkNo, int len, const char *content)
 {
+	int pos = chunkNo * m_chunkSize;
+	m_file.seekg(pos);
+	m_file.write(content, len);
+	m_file.flush(); //ToDo: Make sure Save to disk
 	return true;
 }

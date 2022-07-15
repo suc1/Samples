@@ -14,7 +14,7 @@
 
 class BigFile {
 public:
-	const int m_chunkSize = 16; //分片长度, 2^31 = 2,147,483,648
+	const static int m_chunkSize = 16; //分片长度, 2^31 = 2,147,483,648
 public:
 	BigFile(const char* fileName, bool forRead);	//Client=Read, Server=Write
 	~BigFile();
@@ -25,10 +25,18 @@ public:
 	std::unique_ptr<char> ReadChunk(int chunkNo);
 
 	///Server=Write
-	bool WriteChunk(const std::string& fileHash, int chunkNo);
+	bool WriteChunk(int chunkNo, int len, const char* content);
 public:
 	std::string m_fileName;
+	std::string m_hashFile;
 	struct stat m_stat;
+
+private:
+	inline int GetReadWriteLen(int pos, int maxLen = m_chunkSize) const {
+		int readLen = m_stat.st_size - pos;
+		if (readLen > maxLen) readLen = maxLen;
+		return readLen;
+	}
 private:
 	std::fstream m_file;
 };

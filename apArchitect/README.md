@@ -6,3 +6,4 @@
 ## 软件资源
 1. [cpp-httplib
 ](https://github.com/yhirose/cpp-httplib.git)
+2. [hash-library](https://github.com/stbrumme/hash-library)
