@@ -1,5 +1,4 @@
-#include "D:/study/cpp-httplib/httplib.h"
-//https://github.com/yhirose/cpp-httplib.git
+#include "../../../ThirdPartyLib/cpp-httplib/httplib.h"
 
 #include "ControlFile.h"
 #include "BigFile.h"
@@ -17,9 +16,18 @@ void BigFileServer::checkFileStatus(const httplib::Request& req, httplib::Respon
     int chunkSize = stoi( req.get_param_value("chunkSize") );
 
     m_pConf = ControlFile::Instance(hashFile, length, chunkSize);
-    int pos = 123; // m_pConf->StartPoint(hashFile);
+    int pos = m_pConf->StartPoint(hashFile);
     //秒传
     //断点续传
     res.set_header("StartPoint", to_string(pos));
     res.set_content("BigFile", "text/html");
+
+    if (pos >= 0) {
+        m_pBigFile = new BigFile(hashFile.c_str(), false);
+    }
+}
+
+bool BigFileServer::ReceiveChunk(const httplib::Request& req, httplib::Response& res) {
+
+    return false;
 }

@@ -14,11 +14,12 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\ThirdPartyLib\hash-library\md5.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)BigFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)md5.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\ThirdPartyLib\cpp-httplib\httplib.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\ThirdPartyLib\hash-library\md5.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BigFile.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)md5.h" />
   </ItemGroup>
 </Project>

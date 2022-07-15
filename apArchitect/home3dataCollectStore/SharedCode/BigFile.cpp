@@ -4,7 +4,7 @@
 #include <chrono>
 
 #include "BigFile.h"
-#include "md5.h"
+#include "../../../ThirdPartyLib/hash-library/md5.h"
 
 using namespace std;
 

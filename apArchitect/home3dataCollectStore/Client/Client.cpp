@@ -7,8 +7,7 @@
 
 #include <iostream>
 
-#include "D:/study/cpp-httplib/httplib.h"
-//https://github.com/yhirose/cpp-httplib.git
+#include "../../../ThirdPartyLib/cpp-httplib/httplib.h"
 
 #include "BigFile.h"
 
@@ -44,10 +43,8 @@ int main(void) {
     if (res == nullptr) return -1;
     if(res->status!=200) return -1;
 
-    //httplib::Headers headers = { {"StartPoint", "345"} };
-    //int pos = res->get_header_value<int>(headers, "StartPoint");
-    //cout << "pos=" << pos << endl;
-
+    int pos = stoi( res->get_header_value("StartPoint") );
+    cout << "pos=" << pos << endl;
 
     cout << res->status << endl;
     cout << res->get_header_value("StartPoint") << endl;

@@ -10,8 +10,8 @@
 #include <iostream>
 #include <fstream>
 
-#include "D:/study/cpp-httplib/httplib.h"
-//https://github.com/yhirose/cpp-httplib.git
+#include "../../../ThirdPartyLib/cpp-httplib/httplib.h"
+
 #include "BigFile.h"
 #include "BigFileServer.h"
 
