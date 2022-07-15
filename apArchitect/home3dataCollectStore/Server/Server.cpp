@@ -91,8 +91,8 @@ int main(void) {
     svr.set_keep_alive_timeout(10);  // Default is 5
 
     BigFileServer bg;
-    svr.Get("/BigFile", [&](const Request& req, Response& res) {
-        bg.checkFileStatus(req, res);
+    svr.Post("/BigFile", [&](const Request& req, Response& res) {
+        bg.Post(req, res);
         });
 
     svr.Get("/", [=](const Request & /*req*/, Response &res) {

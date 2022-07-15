@@ -21,6 +21,9 @@ BigFile::BigFile(const char* fileName, bool forRead)	//Client=Read, Server=Write
 	}
 	else {
 		m_file.open(fileName, ios_base::in | ios_base::out | ios_base::binary);
+		if (!m_file.is_open()) {
+			m_file.open(fileName, ios_base::in | ios_base::out | ios_base::binary | ios_base::trunc);
+		}
 		assert(m_file.is_open());
 	}
 }
@@ -76,7 +79,7 @@ std::string BigFile::HashFileContent()
 	bg.close();
 	md5 = md5Class.getHash();
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	std::cout << "Hash end: take " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
+	std::cout << "Hash end: take " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << "[ns]" << std::endl;
 
 	ofstream conf(hashFileName, ios_base::out);
 	if (conf.is_open()) {
@@ -87,19 +90,21 @@ std::string BigFile::HashFileContent()
 	return md5;
 }
 
-std::unique_ptr<char> BigFile::ReadChunk(int chunkNo)
+std::unique_ptr<char> BigFile::ReadChunk(int chunkNo, int& pos)
 {
-	//std::unique_ptr<char*> ret = std::make_unique< char[] >(m_chunkSize);
-	std::unique_ptr<char> ret ( new char[m_chunkSize] );
-	int pos = chunkNo * m_chunkSize;
+	pos = chunkNo * m_chunkSize;
 	m_file.seekg(pos);
 	pos = GetReadWriteLen(pos);
+	assert( pos >= 0 );		//ToDo: If server ask more (chunsize changed), crash here
+
+	//std::unique_ptr<char*> ret = std::make_unique< char[] >(m_chunkSize);
+	std::unique_ptr<char> ret(new char[pos]);
 	m_file.read(ret.get(), pos);
 	return std::move(ret);
 }
 
 //Server=Write
-bool BigFile::WriteChunk(int chunkNo, int len, const char *content)
+bool BigFile::WriteChunk(const char* content, int chunkNo, int len)
 {
 	int pos = chunkNo * m_chunkSize;
 	m_file.seekg(pos);

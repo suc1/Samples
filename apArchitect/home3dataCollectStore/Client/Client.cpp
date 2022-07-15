@@ -10,6 +10,7 @@
 #include "../../../ThirdPartyLib/cpp-httplib/httplib.h"
 
 #include "BigFile.h"
+#include "BigFileClient.h"
 
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
 #undef CPPHTTPLIB_OPENSSL_SUPPORT
@@ -31,24 +32,32 @@ int main(void) {
     httplib::Client cli("localhost", 8080);
 #endif
 
-    //cli.set_keep_alive(true);
-    //cli.set_connection_timeout(100);
+    cli.set_keep_alive(true);
+    cli.set_connection_timeout(100);
 
-    BigFile bg(R"(D:\sample\apArchitect\home3dataCollectStore\Client\Client.cpp)", true);
-    string hashParam = bg.HashFileContent();
-    hashParam = httplib::detail::encode_query_param(hashParam);
-    char buf[512];
-    snprintf(buf, sizeof(buf), "/BigFile?hash=%s&length=%d&chunkSize=%d", hashParam.c_str(), bg.m_stat.st_size, bg.m_chunkSize);
-     auto res = cli.Get(buf);
+    BigFileClient bg(cli);
+    auto res = bg.CheckFileStatus( R"(D:\sample\apArchitect\home3dataCollectStore\Client\Client.cpp)" );
     if (res == nullptr) return -1;
     if(res->status!=200) return -1;
 
-    int pos = stoi( res->get_header_value("StartPoint") );
-    cout << "pos=" << pos << endl;
+    int pos = stoi( res->body );
+    if (pos < 0) {
+        //秒传
+        cout << "File has been transfered before" << endl;
+        return 0;
+    }
 
-    cout << res->status << endl;
-    cout << res->get_header_value("StartPoint") << endl;
-    cout << res->body << endl;
+    //ToDo: reuse MultipartFormData???
+    while (pos >= 0) {
+        cli.set_keep_alive(true);	//Why need repeat line 35-36??
+        cli.set_connection_timeout(100);
+
+        res = bg.SendChunk(pos);
+        if (res == nullptr) return -1;
+        if (res->status != 200) return -1;
+
+        pos = stoi(res->body);
+    }
 
     return 0;
 }

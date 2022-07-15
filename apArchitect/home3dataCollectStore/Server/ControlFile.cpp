@@ -8,7 +8,6 @@ using namespace std;
 
 ControlFile* ControlFile::m_pInst = nullptr;
 
-//ToDo: 避免重复打开关闭文件？Flush
 ControlFile::ControlFile(const std::string& fileHash, uint64_t length, uint32_t	chunkSize ) {
 	struct stat stat1;
 	string fileName( FileName(fileHash) );
@@ -17,6 +16,7 @@ ControlFile::ControlFile(const std::string& fileHash, uint64_t length, uint32_t	
 		if (conf.is_open()) {
 			char* buf = new char[stat1.st_size];
 			conf.read(buf, stat1.st_size);
+			//ToDo: if chunkSize was changed, crash in client
 			conf.close();
 
 			m_pRec = reinterpret_cast<RECORD*>(buf);
@@ -43,6 +43,7 @@ ControlFile::~ControlFile() {
 	delete[]((char*)m_pRec);	//delete m_pInst;???
 }
 
+//ToDo: 避免重复打开关闭文件？Flush
 bool ControlFile::SaveChunk(const std::string& fileHash) {
 	ofstream conf(FileName(fileHash), ios_base::out | ios_base::binary);
 	if (conf.is_open()) {

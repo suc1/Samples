@@ -20,9 +20,12 @@ class BigFileServer {
 public:
 	BigFileServer() = default;
 	~BigFileServer() = default;
+	
+	void Post(const httplib::Request& req, httplib::Response& res);
 
-	void checkFileStatus(const httplib::Request& req, httplib::Response& res);
-	bool ReceiveChunk(const httplib::Request& req, httplib::Response& res);
+private:
+	void CheckFileStatus(const std::string& fileHash, uint64_t length, uint32_t	chunkSize, httplib::Response& res);
+	bool ReceiveChunk(const std::string& hashFile, const char* content, int no, int length, httplib::Response& res);
 private:
 	ControlFile  *m_pConf    = nullptr;
 	BigFile      *m_pBigFile = nullptr;
