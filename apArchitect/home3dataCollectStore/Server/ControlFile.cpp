@@ -27,7 +27,7 @@ ControlFile::ControlFile(const std::string& fileHash, uint64_t length, uint32_t	
 	}
 
 	assert(length > 0 && chunkSize > 0);
-	uint32_t chunkSum = uint32_t (length + chunkSize - 1) / chunkSize;
+	uint32_t chunkSum = uint32_t ( (length + chunkSize - 1) / chunkSize );
 	int len = sizeof(RECORD) - sizeof(bool) + sizeof(bool) * chunkSum;
 	m_pRec = reinterpret_cast<RECORD*>(new char[len]);
 

@@ -8,10 +8,15 @@
 ](https://github.com/yhirose/cpp-httplib.git)
 2. [hash-library](https://github.com/stbrumme/hash-library)
 
-## 第3章作业:数据的采集和存储
+## 第2章作业:数据的产生: home2data_generate
+命令在command.txt
+
+## 第3章作业:数据的采集和存储: home3dataCollectStore
 1. 局限: 客户端和服务器端只支持一个链接，最好改成多个链接
 2. 局限: 服务器端支持多文件上载
 3. http传输需要校验吗？
 4. chunkSize一开始就固定死。如果改变需要删掉*.conf，然后运行
 5. Client side: *.hash智能判断修改
 6. *.conf需要把hash值改成上传文件名，并且存hash值
+7. WriteFile.py 产生50G文件
+8. 4.2G文件: 创建文件1.3Min, 产生Hash耗时58 秒，传输文件耗时16分钟

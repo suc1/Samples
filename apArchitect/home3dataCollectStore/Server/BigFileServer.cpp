@@ -10,7 +10,7 @@ void BigFileServer::Post(const httplib::Request& req, httplib::Response& res) {
     std::string method = req.get_header_value("method");
     if (method == "enquiry") {
         std::string hashFile = req.get_header_value("hash");
-        int length = stoi(req.get_header_value("length"));
+        int64_t length = stoll(req.get_header_value("length"));
         int chunkSize = stoi(req.get_header_value("chunkSize"));
 
         CheckFileStatus(hashFile, length, chunkSize, res);

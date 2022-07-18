@@ -22,6 +22,12 @@
 using namespace std;
 
 int main(void) {
+    //64 bit compile
+    cout << "Size of int : " << sizeof(int) << endl;                //4
+    cout << "Size of int* : " << sizeof(int*) << endl;              //8
+    cout << "Size of long long : " << sizeof(long long) << endl;    //8
+    cout << "Size of int64_t : " << sizeof(int64_t) << endl;        //8
+
 #ifdef CPPHTTPLIB_OPENSSL_SUPPORT
     httplib::SSLClient cli("localhost", 8080);
     //httplib::SSLClient cli("google.com");
@@ -36,7 +42,10 @@ int main(void) {
     cli.set_connection_timeout(100);
 
     BigFileClient bg(cli);
-    auto res = bg.CheckFileStatus( R"(D:\sample\apArchitect\home3dataCollectStore\Client\Client.cpp)" );
+    //auto res = bg.CheckFileStatus( R"(D:\sample\apArchitect\home3dataCollectStore\Client\Client.cpp)" );
+    //auto res = bg.CheckFileStatus(R"(D:\sample\apArchitect\home3dataCollectStore\x64\Debug\Client.exe)");
+    //auto res = bg.CheckFileStatus(R"(D:\sample\apArchitect\home3dataCollectStore\50G.dat)");    //太浪费时间了
+    auto res = bg.CheckFileStatus(R"(D:\sample\apArchitect\home3dataCollectStore\4G.dat)");
     if (res == nullptr) return -1;
     if(res->status!=200) return -1;
 

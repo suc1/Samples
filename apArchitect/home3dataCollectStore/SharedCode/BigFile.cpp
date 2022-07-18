@@ -13,8 +13,8 @@ BigFile::BigFile(const char* fileName, bool forRead)	//Client=Read, Server=Write
 	m_fileName = fileName;
 
 	if (forRead) {
-		int i = stat(fileName, &m_stat);
-		assert(i == 0);
+		int i = _stat64(fileName, &m_stat);
+		assert(i == 0); //Run WriteFile.py to generate big file first
 
 		m_file.open(fileName, ios_base::in | ios_base::binary);
 		assert(m_file.is_open());
@@ -66,10 +66,11 @@ std::string BigFile::HashFileContent()
 	
 	cout << "Hash begin..." << endl;
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-	char buf[1024 * 2];
+	//Warning	C6262	Function uses '66572' bytes of stack.  Consider moving some data to heap
+	char buf[1024 * 64];	//windows page size x64 = 2M
 	MD5 md5Class;
 
-	for (int i = 0; i < m_stat.st_size; ) {
+	for (int64_t i = 0; i < m_stat.st_size; ) {
 		int readLen = GetReadWriteLen(i, sizeof(buf));
 		bg.read(buf, readLen);
 
@@ -79,7 +80,8 @@ std::string BigFile::HashFileContent()
 	bg.close();
 	md5 = md5Class.getHash();
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	std::cout << "Hash end: take " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << "[ns]" << std::endl;
+	std::cout << "Hash end: take " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << "[s]" << std::endl;
+	//4.25G cost 58 seconds
 
 	ofstream conf(hashFileName, ios_base::out);
 	if (conf.is_open()) {
@@ -90,25 +92,26 @@ std::string BigFile::HashFileContent()
 	return md5;
 }
 
-std::unique_ptr<char> BigFile::ReadChunk(int chunkNo, int& pos)
+std::unique_ptr<char> BigFile::ReadChunk(int chunkNo, int& len)
 {
-	pos = chunkNo * m_chunkSize;
+	int64_t pos = chunkNo * (int64_t) m_chunkSize;
 	m_file.seekg(pos);
-	pos = GetReadWriteLen(pos);
-	assert( pos >= 0 );		//ToDo: If server ask more (chunsize changed), crash here
+	len = GetReadWriteLen(pos);
+	assert( len >= 0 );		//ToDo: If server ask more (chunsize changed), crash here
 
 	//std::unique_ptr<char*> ret = std::make_unique< char[] >(m_chunkSize);
-	std::unique_ptr<char> ret(new char[pos]);
-	m_file.read(ret.get(), pos);
+	std::unique_ptr<char> ret(new char[len]);
+	m_file.read(ret.get(), len);
 	return std::move(ret);
 }
 
 //Server=Write
 bool BigFile::WriteChunk(const char* content, int chunkNo, int len)
 {
-	int pos = chunkNo * m_chunkSize;
+	int64_t pos = chunkNo * (int64_t) m_chunkSize;
+	//cout << "WriteChunk = " << pos << endl;
 	m_file.seekg(pos);
 	m_file.write(content, len);
-	m_file.flush(); //ToDo: Make sure Save to disk
+	m_file.flush(); //ToDo: Make sure Save to disk, 发现在程序运行中，文件长度是0，OS没有把文件写入磁盘???
 	return true;
 }
