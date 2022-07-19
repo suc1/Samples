@@ -3,6 +3,18 @@
 ## 上课资源
 [上课](https://www.shenlanxueyuan.com/my/course/485)
 
+## 第4章 Devops 自动化实践CI/CD
+1. [Jenkins](https://www.jenkins.io/)
+2. [Gitlab-CI](https://docs.gitlab.com/ee/ci/)
+3. [bazel: remote cache](https://bazel.build/)
+4. [cmake: ninja, ccache + redis](https://cmake.org/)
+5. Code analysis: Sonarqube, Clang-tidy, [Cppcheck](https://cppcheck.sourceforge.io/), [Cppdepend](https://www.cppdepend.com/)
+6. Unit Test: GTest, pytest, GoTest, Java Junit
+7. [CD: Nexus: pypi, debian, docker image](https://help.sonatype.com/integrations/nexus-and-continuous-integration)
+8. [CD: Harbor](https://goharbor.io/blog/harbor-1.9/)
+9. 蓝绿部署，灰度发布，滚动部署
+
+
 ## 软件资源: Git submodule D:\sample\ThirdPartyLib\
 1. [cpp-httplib
 ](https://github.com/yhirose/cpp-httplib.git)
