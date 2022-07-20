@@ -9,3 +9,10 @@ go mod tidy
 
 go run .
 ```
+```
+go mod edit -replace example.com/greetings=../greetings
+go mod tidy
+```
+
+## note
+1. packages -> modules
