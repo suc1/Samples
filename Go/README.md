@@ -17,5 +17,16 @@ go mod tidy
 go test
 go test -v
 ```
+```
+go build
+go list -f '{{.Target}}'
+
+export PATH=$PATH:
+set PATH=%PATH%;"C:\Users\Su Cheng\go\bin"
+go env -w GOBIN=
+
+go install
+
+```
 ## note
 1. packages -> modules
