@@ -13,6 +13,9 @@ go run .
 go mod edit -replace example.com/greetings=../greetings
 go mod tidy
 ```
-
+```
+go test
+go test -v
+```
 ## note
 1. packages -> modules
