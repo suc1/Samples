@@ -13,6 +13,7 @@
 7. [CD: Nexus: pypi, debian, docker image](https://help.sonatype.com/integrations/nexus-and-continuous-integration)
 8. [CD: Harbor](https://goharbor.io/blog/harbor-1.9/)
 9. 蓝绿部署，灰度发布，滚动部署
+10.  .gitlab-ci.yml
 
 
 ## 软件资源: Git submodule D:\sample\ThirdPartyLib\
