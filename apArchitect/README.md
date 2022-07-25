@@ -15,6 +15,23 @@
 9. 蓝绿部署，灰度发布，滚动部署
 10.  .gitlab-ci.yml
 
+## 第5章 基础设施自动化实践
+弹性云服务器（Elastic Cloud Server，ECS）
+云数据库RDS
+云负载均衡（Server Load Balancer，简称SLB）
+云内容分发网络CDN（全称Content Delivery Network）
+虚拟私有云（Virtual Private Cloud）
+
+Infrastructure As Code (IaC)
+Packer创建镜像	13:22/32:42
+```
+wget https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_
+```
+Terraform IT基础架构自动化编排工具	16:57/32:42
+```
+```
+ansible 自动化运维工具
+saltstack 自动化软件，主要为c/s架构
 
 ## 软件资源: Git submodule D:\sample\ThirdPartyLib\
 1. [cpp-httplib
