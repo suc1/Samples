@@ -1,0 +1,72 @@
+# See docs/examples
+# http://doc.gitlab.com/ce/ci/quick_start/README.html
+# http://doc.gitlab.com/ce/ci/yaml/README.html
+
+# You can copy and paste this template into a new `.gitlab-ci.yml` file.
+# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
+#
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Go.gitlab-ci.yml
+
+variables:
+  IMAGE_NAME0: cicd-demo-server
+  IMAGE_NAME: sucdocker/cicd-demo-server
+  IMAGE_TAG: "0.1"
+
+#image: golang:latest
+image: golang:1.17.12-buster
+#image: golang:1.17.8-sonarqube
+
+stages:
+  - build
+  - unitTest
+  - buildDockerImage
+  - deploy
+
+Build:
+  stage: build
+  before_script:
+    - echo "Building..."
+    - go mod tidy
+  script:
+    - go build -o $IMAGE_NAME0 main.go
+  artifacts:
+    untracked: false
+    expire_in: 3 days
+    paths:
+      - $IMAGE_NAME0
+
+
+Unit_Test:
+  stage: unitTest
+  before_script:
+    - echo "Unit Test..."
+    - cd utils
+  script:
+    - go test -v
+
+#Code_Analysis:
+#  stage: codeAnalysis
+#  before_script:
+#    - echo "Code analysis..."
+#    - go get github.com/golang/lint
+#    - go install github.com/golang/lint
+#$  script:
+#    - golint utils
+# Why golint utils fail???????
+
+Build_Docker_Image:
+  stage: buildDockerImage
+  image: docker:20.10.17
+  services:
+    - docker:20.10.17-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS
+  script:
+    - echo "Building Docker..."
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG

@@ -50,3 +50,6 @@ saltstack 自动化软件，主要为c/s架构
 6. *.conf需要把hash值改成上传文件名，并且存hash值
 7. WriteFile.py 产生50G文件
 8. 4.2G文件: 创建文件1.3Min, 产生Hash耗时58 秒，传输文件耗时16分钟
+
+## 第4章作业:Home4Devops
+1. Code_Analysisgo在lint utils失败，不知原因
