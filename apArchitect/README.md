@@ -33,6 +33,9 @@ Terraform IT基础架构自动化编排工具	16:57/32:42
 ansible 自动化运维工具
 saltstack 自动化软件，主要为c/s架构
 
+## 第6章 仿真
+1. 来源: 路测数据，场景编辑，随机生成
+
 ## 软件资源: Git submodule D:\sample\ThirdPartyLib\
 1. [cpp-httplib
 ](https://github.com/yhirose/cpp-httplib.git)
@@ -53,3 +56,9 @@ saltstack 自动化软件，主要为c/s架构
 
 ## 第4章作业:Home4Devops
 1. Code_Analysisgo在lint utils失败，不知原因
+
+## 第5章作业: Home5基础设施自动化实践
+1. [install](https://www.packer.io/downloads)
+2. [Packer tutorial](https://learn.hashicorp.com/packer)
+
+## 第6章作业: 仿真
