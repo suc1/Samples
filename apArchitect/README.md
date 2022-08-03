@@ -60,5 +60,11 @@ saltstack 自动化软件，主要为c/s架构
 ## 第5章作业: Home5基础设施自动化实践
 1. [install](https://www.packer.io/downloads)
 2. [Packer tutorial](https://learn.hashicorp.com/packer)
+3. [使用packer构建自定义镜像](https://songjlg.github.io/2021/11/05/%E4%BD%BF%E7%94%A8packer%E6%9E%84%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E9%95%9C%E5%83%8F/)
+4. [使用Packer创建Ubuntu 18.04 Vagrant Box](https://www.igiftidea.com/article/12828727029.html)
+5. 构建器，配置，预处理
+6. [Ubuntu Hashes](https://help.ubuntu.com/community/UbuntuHashes)
+7. packer build ubuntu1804.json
+
 
 ## 第6章作业: 仿真
