@@ -65,6 +65,14 @@ saltstack 自动化软件，主要为c/s架构
 5. 构建器，配置，预处理
 6. [Ubuntu Hashes](https://help.ubuntu.com/community/UbuntuHashes)
 7. packer build ubuntu1804.json
+8. [SSH密钥验证](https://www.cnblogs.com/arnoLixi/p/10374208.html)
+9. ToDo: 使用UserData安装ansible并配置ssh使用密钥登录 ???
+```
+cd "C:\Users\Su Cheng"
+md .ssh
+cd .ssh
+# step 8
 
+```
 
 ## 第6章作业: 仿真
