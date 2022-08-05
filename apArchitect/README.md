@@ -36,6 +36,22 @@ saltstack 自动化软件，主要为c/s架构
 ## 第6章 仿真
 1. 来源: 路测数据，场景编辑，随机生成
 
+## 第7章 数据可视化
+1. 仿真算法, 仿真平台, 工具链系统
+2. 模型变换(Modeling Transformation)(平移，旋转，剪切)
+3. 观察变换(View Transformation)(世界坐标系->相机坐标系中)
+4. 投影变换(Projection Transformation)(平行光 vs 小孔成像)
+(a) 投射投影(perspective projection)(透视-远小近大)
+(b) 正交投影(orthographic projection)(鸟瞰)
+5. 视口变换(Viewport Transformation)(局部放缩)
+6. 线性变换(scaling, mirror, shear, rotation)
+7. 非线性变换(translation)
+8. 仿射变换(=6+7)
+9. 齐次坐标系(把仿射变换->线性变换), [点在末尾添加1，而向量在末尾添加0](https://www.aiuai.cn/aifarm1946.html)
+10. 矩阵乘法结合律使用
+11. 双向反射分布函数(Bidirectional Reflectance Distribution Function)
+
+
 ## 软件资源: Git submodule D:\sample\ThirdPartyLib\
 1. [cpp-httplib
 ](https://github.com/yhirose/cpp-httplib.git)
@@ -76,3 +92,5 @@ cd .ssh
 ```
 
 ## 第6章作业: 仿真
+
+## 第7章作业: 可视化
