@@ -19,6 +19,9 @@ start /w "" "Docker Desktop Installer.exe" install
 net localgroup docker-users "Su Cheng" /add
 
 docker version
+# hyper-v and containers windows features
+
+# https://hub.docker.com/search?q=node
 ```
 ```
 # tutorial in Docker Desktop
@@ -37,7 +40,7 @@ docker login registry-1.docker.io
 docker tag getting-started sucdocker/getting-started
 docker push sucdocker/getting-started:tagname
 
-# https://labs.play-with-docker.com/		?????
+# https://labs.play-with-docker.com/		#Linux 虚拟机
 docker run -dp 3000:3000 sucdocker/getting-started
 
 # named volumes
@@ -77,7 +80,7 @@ docker run -dp 3000:3000 `
    sh -c "yarn install && yarn run dev"
 
 docker exec -it <mysql-container-id> mysql -u root -p
-docker run -it --network todo-app nicolaka/netshoot
+docker run -it --network todo-app nicolaka/netshoot         #it=interactive
 dig mysql
 ```
 ```
