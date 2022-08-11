@@ -19,6 +19,8 @@ public:
 	void Subscribe(Camera* pCamera);
 	void Subscribe(CALLBACK callback);	//监测到了多少小猫小狗
 	
+	void Debug();
+
 private:
 	void ProcessImage(IMAGE img);
 

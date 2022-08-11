@@ -21,13 +21,14 @@ int main()
     
     //Subscribe
     //由于先登记CountImage CALLBACK，导致.bag中CountImage计数先于图象，但是play时只播放摄像头，不播计数，所以不影响CountImage计数
-    RosBag rb;
+    RosBag rb("CatDog.bag");
     camCat.Subscribe( [&rb](IMAGE img) {rb.ProcessImage(0, img);} );
     camDog.Subscribe( [&rb](IMAGE img) {rb.ProcessImage(1, img);} );
 
     countCat.Subscribe( [&rb](int count) {rb.Process(2, count);} );
     countDog.Subscribe( [&rb](int count) {rb.Process(3, count);} );
 
+    //srand((unsigned int)time(NULL));
     camCat.Start();
     camDog.Start();
 
@@ -36,4 +37,9 @@ int main()
 
     camCat.SetExitFlag();
     camDog.SetExitFlag();
+
+    cout << endl << "CountCat= ";
+    countCat.Debug();
+    cout << "CountDog= ";
+    countDog.Debug();
 }

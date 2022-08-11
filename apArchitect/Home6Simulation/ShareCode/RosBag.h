@@ -16,7 +16,7 @@ class RosBag
 public:
 	enum MessageType {CAT, DOG, COUNT_CAT, COUNT_DOG};
 public:
-	RosBag(bool record = true); //Record/Play
+	RosBag(const char *fileName, bool record = true); //Record/Play
 	~RosBag();
 	
 	void Play( std::function< void(const char*) > rec);

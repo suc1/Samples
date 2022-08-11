@@ -18,7 +18,7 @@ Message: ImageDog, ImageCat
 计算过程: CountCat, CountDog
 
 车载调度系统: CarSchedule
-仿真调度系统: SimSchedule/Simulation
+仿真调度系统: SimSchedule (在Simulation里面)
 rosbag: Record, play
 
 ## Implement 为了简单实现:
@@ -27,8 +27,10 @@ rosbag: Record, play
 3. 部分实现ROS Topic，采用scribe/callback, 但是避开IPC/Socket, 改用直接函数调用
 4. rosbag不单独做为一个进程，避开IPC(只使用文件CatDog.bag), 调度系统启动后rosbag自动运行Record/Play
 5. .bag文件格式: TXT, 每个消息一行(类型，数据). For example:
-(a) 0, 11	//CAT相机,  图象内容是11
-(b) 1, 20	//DOG相机,  图象内容是20
-(c) 2, 8    //CAT计数, 8个
-(d) 3, 6    //DOG计数, 6个
+    1. 0, 11	//CAT相机,  图象内容是11
+    2. 1, 20	//DOG相机,  图象内容是20
+    3. 2, 8    //CAT计数, 8个
+    4. 3, 6    //DOG计数, 6个
 6. 不考虑线程安全
+7. CarSchedule.exe 录制CatDog.bag
+8. Simulation.exe 播放CatDog.bag

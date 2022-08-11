@@ -30,3 +30,10 @@ void CountImage::ProcessImage(IMAGE img) {
 	}
 }
 
+void CountImage::Debug() {
+	cout << m_img.size() << '[';
+	for (auto i : m_img) {
+		cout << i << ',';
+	}
+	cout << "]\n";
+}

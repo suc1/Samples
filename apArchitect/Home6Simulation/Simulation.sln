@@ -13,6 +13,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ShareCode\ShareCode.vcxitems*{1cb9a915-1106-452c-93cd-da6272d9ba70}*SharedItemsImports = 4
 		ShareCode\ShareCode.vcxitems*{3a6a1f06-2a5c-4036-a922-b57d3d567840}*SharedItemsImports = 9
+		ShareCode\ShareCode.vcxitems*{b490e3a5-7e1f-4f0c-97f6-3dfc5f94d398}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

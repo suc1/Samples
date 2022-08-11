@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <iostream>
-
+#include <assert.h>
 #include "RosBag.h"
 
 using namespace std;
 
-RosBag::RosBag(bool record /*= true*/) {
-	m_file.open("CatDog.bag", record ? ios_base::out : ios_base::in);
+RosBag::RosBag(const char* fileName, bool record /*= true*/) {
+	m_file.open(fileName, record ? ios_base::out : ios_base::in);
+	assert(m_file.is_open());
 }
 
 RosBag::~RosBag() {
