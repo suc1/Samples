@@ -10,8 +10,15 @@
 7. [天之博特TIANBOT的个人空间](https://space.bilibili.com/451561151)
 8. []()
 
-## 课程
+## 课程-硬件
 1. 調相（英語：Phase Modulation，縮寫：PM），又稱相位調變
 2. 电调，全称电子调速器，英文Electronic Speed Control，简称ESC。 针对电机不同，可分为有刷电调和无刷电调
 3. [RoboMaster开发板C](https://www.robomaster.com/zh-CN/products/components/general/development-board-type-c/info)
-4. 
+4. 英伟达的 Jetson Nano是一块用于深度学习或者计算机视觉的开发板
+5. jetson nano网卡专为解决Jetson Nano没有内置无线网卡
+
+## 课程-软件
+1. 3.0 3.0 （推荐）一分钟进行ROS开发
+2. 机器人学: IFRR(RSS, ISRR, IJRR), IEEE RAS(ICRA, IROS, TRO, CASE)
+3. [F1tenth.org/Lab 3 - Wall Following](https://f1tenth.org/learn.html)
+4. Learn 3.1
