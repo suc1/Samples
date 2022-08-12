@@ -38,19 +38,31 @@ saltstack 自动化软件，主要为c/s架构
 
 ## 第7章 数据可视化
 1. 仿真算法, 仿真平台, 工具链系统
-2. 模型变换(Modeling Transformation)(平移，旋转，剪切)
+2. 模型变换(Modeling Transformation)(平移，旋转-逆时针为正，剪切)
 3. 观察变换(View Transformation)(世界坐标系->相机坐标系中)
 4. 投影变换(Projection Transformation)(平行光 vs 小孔成像)
-(a) 投射投影(perspective projection)(透视-远小近大)
-(b) 正交投影(orthographic projection)(鸟瞰)
+    1. 投射投影(perspective projection)(锥形投影:    透视-远小近大)
+    2. 正交投影(orthographic projection)(长方体投影: 鸟瞰)
 5. 视口变换(Viewport Transformation)(局部放缩)
-6. 线性变换(scaling, mirror, shear, rotation)
-7. 非线性变换(translation)
+6. 线性变换(scaling缩放, mirror镜像, shea剪切, rotation旋转)
+7. 非线性变换(translation平移)
 8. 仿射变换(=6+7)
 9. 齐次坐标系(把仿射变换->线性变换), [点在末尾添加1，而向量在末尾添加0](https://www.aiuai.cn/aifarm1946.html)
 10. 矩阵乘法结合律使用
-11. 双向反射分布函数(Bidirectional Reflectance Distribution Function)
+11. 双向反射分布函数(Bidirectional Reflectance Distribution Function): 此点的光亮 = 此点的自发光 + 所有光源对此点的贡献
+12. 着色模型：经验规律模型, 假想规律模型, 物理模型
+13. Lambertian模型（漫反射着色模型）, Blinn-phone模型（高光反射模型）
+14. 三角形, 栅格化
+15. Z-buffer: Stencil buffer / Accumulation buffer / Multi-layer alpha blending
+16. 抗走样(Anti-aliasing): 锯齿过渡柔和
+17. 光线追踪
 
+## 第8章 使用
+1. 传统网关: Nginx; API网关: Kong, APISIX
+2. 一致性协议包括 Raft, Paxos 和 Gossip
+3. 分布式事务解决方案有2PC，3PC以及事务消息
+
+---
 
 ## 软件资源: Git submodule D:\sample\ThirdPartyLib\
 1. [cpp-httplib
@@ -94,3 +106,5 @@ cd .ssh
 ## 第6章作业: 仿真
 
 ## 第7章作业: 可视化
+
+## 第8章作业: 服务发现和注册 
