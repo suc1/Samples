@@ -4,3 +4,6 @@
 [submodule "ThirdPartyLib/hash-library"]
 	path = ThirdPartyLib/hash-library
 	url = https://github.com/stbrumme/hash-library
+[submodule "apArchitect/Home7Camera/Camera3D"]
+	path = apArchitect/Home7Camera/Camera3D
+	url = https://github.com/suc1/Camera3D.git
