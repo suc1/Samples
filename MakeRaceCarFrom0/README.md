@@ -1,14 +1,19 @@
 # 《从零开始制作ROS无人竞速车》- 天之博特TIANBOT
 
 ## 上课资源
-1. [上课](https://www.bilibili.com/video/BV1PY4y1E7b8?spm_id_from=333.999.list.card_archive.click)
-2. [RACECAR无人车配置清单和课程大纲](https://docs.qq.com/sheet/DT0hDckJXUWZCbWpC)
-3. [RACECAR无人车STM32源码](https://github.com/tianbot/tianracer_firmware)
-4. [F1TENTH无人车竞速中国赛](https://icaus2022.scimeeting.cn/cn/web/index/12954_1001115)
-5. [F1TENTH无人车竞速中国赛●赛事规则答疑](https://www.bilibili.com/video/BV17B4y1B7Wm)
-6. [RACECAR教程](https://mp.weixin.qq.com/s/DU4yDuJbp6O8W3qfO_xueQ)
-7. [天之博特TIANBOT的个人空间](https://space.bilibili.com/451561151)
-8. []()
+1. [从零开始制作ROS无人竞速车](https://space.bilibili.com/451561151/channel/collectiondetail?sid=558886)
+2. [ROS零基础入门百日谈](https://space.bilibili.com/451561151/channel/collectiondetail?sid=56601)
+3. [ROS移动机器人研发实战]()
+4. [F1tenth Simulator线上仿真1](https://www.bilibili.com/video/BV1YP4y1L7sz?spm_id_from=333.999.0.0&vd_source=1170af3f1b76594679262c4a8be354cc)
+5. Simulator线上仿真2](https://www.bilibili.com/video/BV12q4y1g7Dp?spm_id_from=333.999.0.0&vd_source=1170af3f1b76594679262c4a8be354cc)
+6. [F1tenth竞速无人车ROS实战]()
+7. [RACECAR无人车配置清单和课程大纲](https://docs.qq.com/sheet/DT0hDckJXUWZCbWpC)
+8. [RACECAR无人车STM32源码](https://github.com/tianbot/tianracer_firmware)
+9. [F1TENTH无人车竞速中国赛](https://icaus2022.scimeeting.cn/cn/web/index/12954_1001115)
+10. [F1TENTH无人车竞速中国赛●赛事规则答疑](https://www.bilibili.com/video/BV17B4y1B7Wm)
+11. [RACECAR教程](https://mp.weixin.qq.com/s/DU4yDuJbp6O8W3qfO_xueQ)
+12. [天之博特TIANBOT的个人空间](https://space.bilibili.com/451561151)
+13. []()
 
 ## 课程-硬件
 1. 調相（英語：Phase Modulation，縮寫：PM），又稱相位調變
