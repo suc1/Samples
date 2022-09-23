@@ -5,6 +5,8 @@ All sample code
 ## DemoViewer.java
 1. [How to create your own simple 3D render engine in pure Java](http://blog.rogach.org/2015/08/how-to-create-your-own-simple-3d-render.html)
 2. [纯Java构造一个简单的3D渲染引擎](https://mp.weixin.qq.com/s/mnUcffuh0nqhuVXvo9eGLw)
+3. `javac -encoding UTF-8 MyDemoViewer.java`
+4. `java MyDemoViewer`
 
 ## 旋转矩阵
 1. [旋转矩阵](https://zh.wikipedia.org/wiki/%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5)
