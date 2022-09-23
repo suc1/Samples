@@ -125,6 +125,21 @@ public class MyDemoViewer {
                         Vertex v2 = transform.transform(t.v2);
                         Vertex v3 = transform.transform(t.v3);
 
+                        //平面着色: 阴影效果
+                        Vertex ab = new Vertex(v2.x - v1.x, v2.y - v1.y, v2.z - v1.z);
+                        Vertex ac = new Vertex(v3.x - v1.x, v3.y - v1.y, v3.z - v1.z);
+                        Vertex norm = new Vertex(
+                            ab.y * ac.z - ab.z * ac.y,
+                            ab.z * ac.x - ab.x * ac.z,
+                            ab.x * ac.y - ab.y * ac.x
+                        );
+                        double normalLength = Math.sqrt(norm.x * norm.x + norm.y * norm.y + norm.z * norm.z);
+                        norm.x /= normalLength;
+                        norm.y /= normalLength;
+                        norm.z /= normalLength;
+
+                        double angleCos = Math.abs(norm.z);
+
                         // since we are not using Graphics2D anymore,
                         // we have to do translation manually
                         v1.x += getWidth() / 2;     v1.y += getHeight() / 2;
@@ -150,7 +165,9 @@ public class MyDemoViewer {
                                     double depth = b1 * v1.z + b2 * v2.z + b3 * v3.z;
                                     int zIndex = y * img.getWidth() + x;
                                     if (zBuffer[zIndex] < depth) {
-                                        img.setRGB(x, y, t.color.getRGB());
+                                        //img.setRGB(x, y, t.color.getRGB());
+                                        //img.setRGB(x, y, getShade(t.color, angleCos).getRGB());
+                                        img.setRGB(x, y, getShade2(t.color, angleCos).getRGB());
                                         zBuffer[zIndex] = depth;
                                     }
                                 }
@@ -168,5 +185,25 @@ public class MyDemoViewer {
 
         frame.setSize(400, 400);
         frame.setVisible(true);
+    }
+
+    //虽然它会给我们一些阴影效果，但它的衰减速度会比我们需要的快得多
+    public static Color getShade(Color color, double shade) {
+        int red = (int) (color.getRed() * shade);
+        int green = (int) (color.getGreen() * shade);
+        int blue = (int) (color.getBlue() * shade);
+        return new Color(red, green, blue);
+    }
+    //将每种颜色从缩放格式转换为线性格式，应用阴影，然后再转换回缩放格式
+    public static Color getShade2(Color color, double shade) {
+        double redLinear = Math.pow(color.getRed(), 2.4) * shade;
+        double greenLinear = Math.pow(color.getGreen(), 2.4) * shade;
+        double blueLinear = Math.pow(color.getBlue(), 2.4) * shade;
+
+        int red = (int) Math.pow(redLinear, 1/2.4);
+        int green = (int) Math.pow(greenLinear, 1/2.4);
+        int blue = (int) Math.pow(blueLinear, 1/2.4);
+
+        return new Color(red, green, blue);
     }
 }
