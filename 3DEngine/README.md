@@ -1,6 +1,9 @@
 # sample
 
 All sample code
+DemoViewer.java   原作者的程序, 正六面体, 全白
+MyDemoViewer.java 我根据英文文章写的程序,完全工作, 彩色球体
+Engine3D.java     我根据中文文章写的程序,没有完成
 
 ## DemoViewer.java
 1. [How to create your own simple 3D render engine in pure Java](http://blog.rogach.org/2015/08/how-to-create-your-own-simple-3d-render.html)
