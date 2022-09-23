@@ -97,12 +97,20 @@ public class MyDemoViewer {
                                         Color.BLUE));
                     
                     double heading = Math.toRadians(headingSlider.getValue());  //底部水平滚动条: XZ plane -> 绕Y轴转
-                    Matrix3 transform = new Matrix3(new double[] {
+                    Matrix3 headingTransform = new Matrix3(new double[] {       //Roll
                             Math.cos(heading), 0, -Math.sin(heading),
                             0, 1, 0,
                             Math.sin(heading), 0, Math.cos(heading)
                             });
 
+                    double pitch = Math.toRadians(pitchSlider.getValue());     //右边垂直滚动条: YZ plane -> 绕X轴转
+                    Matrix3 pitchTransform = new Matrix3(new double[] {
+                            1, 0, 0,
+                            0, Math.cos(pitch), Math.sin(pitch),
+                            0, -Math.sin(pitch), Math.cos(pitch)
+                            });
+
+                    Matrix3 transform = headingTransform.multiply(pitchTransform);
                     g2.translate(getWidth() / 2, getHeight() / 2);
                     g2.setColor(Color.WHITE);
                     for (Triangle t : tris) {
