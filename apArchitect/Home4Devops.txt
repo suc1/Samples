@@ -1,0 +1,9 @@
+现在我们有一个简单的server工程 ( https://gitlab.com/Anoyer/go-server-demo ) ，其中
+build、code-analysis、unit-test、build docker image命令都已知。请你参考前面实操
+demo帮助这个项目接入和实操项目相似的CI/CD流程，并将镜像上传至自身hub源中。
+
+作业步骤:
+
+1，fork一份代码到自己空间中
+2，前往hub.docker.com，注册账号，用于存放镜像
+3，编排.gitlab-ci.yml文件，给项目接入CI/CD

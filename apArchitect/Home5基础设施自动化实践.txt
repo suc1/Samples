@@ -1,0 +1,9 @@
+以下作业根据所拥有的环境二选一进行操作 :
+
+作业一 : (阿里云)
+1. 通过packer封装一个自定义ubuntu镜像，使用UserData安装ansible并配置ssh使用密钥登录
+2. 通过ci流水线驱动Terraform创建一个1核1G的ECS实例，要求使用上一步packer生成的镜像，创建好的实例可以通过ssh密钥能登入成功
+
+作业二:
+1. 通过packer封装一个virtualbox平台的自定义ubuntu镜像，使用userData安装ansible并配置ssh使用密钥登录
+2. virtualbox加载生成的镜像，创建好的实例可以通过ssh密钥能登入成功
