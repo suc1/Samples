@@ -1,0 +1,5 @@
+local_costmap:
+  #Independent settings for the local costmap
+  publish_voxel_map: true
+  global_frame: odom_combined
+  robot_base_frame: base_link

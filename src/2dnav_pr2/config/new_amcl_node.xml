@@ -1,0 +1,2 @@
+<!-- Design tip: Use machine tags to balance load and control which nodes run on the same machine, and consider having the machine file name depend on an environment variable for reusability-->
+<node pkg="amcl" type="amcl" name="amcl" machine="c1" />

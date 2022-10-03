@@ -1,0 +1,10 @@
+<launch>
+  <include file="$(find pr2_alpha)/sim.machine" />
+  <include file="$(find 2dnav_pr2)/config/new_amcl_node.xml" />
+  <include file="$(find 2dnav_pr2)/config/base_odom_teleop.xml" />
+  <include file="$(find 2dnav_pr2)/config/lasers_and_filters.xml" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find gazebo_worlds)/Media/materials/textures/map3.png 0.1" respawn="true" machine="c1" />
+  <include file="$(find 2dnav_pr2)/config/ground_plane.xml" />
+  <!-- The naviagtion stack and associated parameters -->
+  <include file="$(find 2dnav_pr2)/move_base/move_base.xml" />
+</launch>

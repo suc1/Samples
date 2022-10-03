@@ -42,3 +42,21 @@ roslaunch realsense2_camera rs_camera.launch
 rosrun CVBridgeTest testBridge.py
 python              testBridge.py
 ```
+
+# 2. beginner_tutorials
+18. Reading messages from a bag file
+```
+rostopic echo /turtle1/cmd_vel | tee topic1.yaml
+time rosbag play --immediate 2022-09-30-08-43-45.bag --topics /turtle1/cmd_vel
+
+wget https://raw.githubusercontent.com/ElectricRCAircraftGuy/eRCaGuy_dotfiles/master/useful_scripts/ros_readbagfile.py
+
+time ros_readbagfile.py 2022-09-30-08-43-45.bag /turtle1/cmd_vel
+
+roswtf
+```
+
+# 3. 2dnav_pr2
+1. 没有使用原始包，只是为了练习 "3.Roslaunch tips for large projects"
+2. 8.1.1 Practice-A. Separate packages for .launch and other config files
+3. 8.1.2 Practice-B. Group many configs into a single package or fewer packages
