@@ -64,5 +64,7 @@ roswtf
 ## 4. node_example
 1. <<5.Defining Custom Messages>>, <<ROSNodeTutorialPython>>
 
-## 5. AMR
-All AMR packages
+## 5. AMR/AbseilTest
+1. [tutorial](https://abseil.io/docs/cpp/quickstart-cmake.html#linking-your-code-to-the-abseil-repository)
+2. `git clone https://github.com/abseil/abseil-cpp.git`
+3. [C++ Programming Guides](https://abseil.io/docs/cpp/guides/)
