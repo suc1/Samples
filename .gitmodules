@@ -7,3 +7,6 @@
 [submodule "apArchitect/Home7Camera/Camera3D"]
 	path = apArchitect/Home7Camera/Camera3D
 	url = https://github.com/suc1/Camera3D.git
+[submodule "/home/cheapx/Samples/src/ROS1/angles"]
+	path = /home/cheapx/Samples/src/ROS1/angles
+	url = http://192.168.3.250:3000/ROS1/angles.git

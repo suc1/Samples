@@ -30,7 +30,13 @@ catkin_create_pkg new_ros_package std_msgs rospy roscpp
 ```
 ## Checkout & Build
 ```
+cd ~/Samples
+git submodule add http://192.168.3.250:3000/ROS1/angles.git  ~/Samples/src/ROS1/angles
+
 catkin_make -DCMAKE_BUILD_TYPE=Release
+catkin_make_isolated  -DCATKIN_ENABLE_TESTING=0 -DCMAKE_BUILD_TYPE=Release
+
+source ~/Samples/devel/setup.bash
 ```
 
 ## 1. CVBridgeTest
