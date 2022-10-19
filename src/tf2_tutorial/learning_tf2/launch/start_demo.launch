@@ -13,4 +13,7 @@
     </node>
 
     <node pkg="learning_tf2" type="turtle_tf2_listener.py" name="listener" output="screen"/>
+
+    <!--node pkg="learning_tf2" type="fixed_tf2_broadcaster.py"   name="broadcaster_fixed"   output="screen"/-->
+    <node pkg="learning_tf2" type="dynamic_tf2_broadcaster.py" name="broadcaster_dynamic" output="screen"/>
   </launch>

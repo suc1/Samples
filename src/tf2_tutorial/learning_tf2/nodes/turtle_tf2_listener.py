@@ -24,7 +24,8 @@ if __name__ == '__main__':
         try:
             # lookupTransform(	const std::string &target_frame, const std::string &source_frame,
             # const ros::Time &time, const ros::Duration timeout)
-            trans = tfBuffer.lookup_transform(turtle_name, 'turtle1', rospy.Time())
+            # trans = tfBuffer.lookup_transform(turtle_name, 'turtle1', rospy.Time())
+            trans = tfBuffer.lookup_transform(turtle_name, 'carrot1', rospy.Time())
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
             rate.sleep()
             continue
