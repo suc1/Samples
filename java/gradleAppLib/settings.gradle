@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'gradleAppLib'
-include('app', 'list', 'utilities')
+include('app', 'list', 'utilities', 'lib2')

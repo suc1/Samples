@@ -8,6 +8,7 @@ import gradleapplib.list.LinkedList;
 import static gradleapplib.utilities.StringUtils.join;
 import static gradleapplib.utilities.StringUtils.split;
 import static gradleapplib.app.MessageUtils.getMessage;
+import gradleapplib.lib2.newLib;
 
 import org.apache.commons.text.WordUtils;
 
@@ -17,5 +18,7 @@ public class App {
         tokens = split(getMessage());
         String result = join(tokens);
         System.out.println(WordUtils.capitalize(result));
+
+        System.out.println(new newLib().Init());
     }
 }

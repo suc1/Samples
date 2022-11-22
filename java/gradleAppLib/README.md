@@ -68,3 +68,5 @@ tasks.named('jar') {
 ## Build & Run on ubuntu
 1. bash: ./gradlew: Permission denied: `chmod +x gradlew`
 2. `git add -f gradle/wrapper/gradle-wrapper.jar`
+
+## 再加一个新库: lib2
