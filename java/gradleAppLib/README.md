@@ -70,3 +70,31 @@ tasks.named('jar') {
 2. `git add -f gradle/wrapper/gradle-wrapper.jar`
 
 ## 再加一个新库: lib2
+
+## [Building Java & JVM projects](https://docs.gradle.org/current/userguide/building_java_projects.html)
+1. 使用`Java Library Plugin`
+    1. `compileJava` task compiles `src/main/java`
+	2. `compileTestJava` task compiles `src/test/java`
+	3. `test`
+	4. `jar` generate `<project>-<version>.jar`
+	5. `javadoc`
+2. source sets: 自动为每个源集创建编译任务, `compileJava` = `compileOnly` + `implementation`
+3. Java 项目的依赖:
+    1. 存储库位置: `repositories {}`
+	2. 名称和版本, 做什么: `dependencies {}`. 
+	    1. 配置: compileOnly; implementation=compile+runtime; runtimeOnly; testCompileOnly; testImplementation; testRuntimeOnly; api; compileOnlyApi
+		2. 使用本地文件系统目录中的依赖项
+		3. 将兄弟项目声明为依赖项: `implementation project(':shared')`
+4. 编译你的代码
+    1. 自定义文件和目录位置
+	2. 附加third-party目录路径, 附加`srcDir 'thirdParty/src/main/java'`, 替换`srcDirs = ['src']`
+	3. 更改编译器选项
+	4. 分别编译独立来源, 自定义源集
+5. 管理资源: WriteProperties
+6. 运行测试
+7. 打包发行
+8. 生成 API 文档
+9. clean
+10. 构建 JVM 组件
+11. 构建 Java 库: api 公共 API; implementation 内部实现细节
+12. 构建 Java 应用程序

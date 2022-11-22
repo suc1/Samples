@@ -5,3 +5,5 @@
 plugins {
     id 'gradleapplib.java-library-conventions'
 }
+
+version = '0.0.0'
