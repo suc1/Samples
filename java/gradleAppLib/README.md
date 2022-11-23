@@ -98,3 +98,11 @@ tasks.named('jar') {
 10. 构建 JVM 组件
 11. 构建 Java 库: api 公共 API; implementation 内部实现细节
 12. 构建 Java 应用程序
+
+## 再加一个新app: app2
+```
+mainClass = 'gradleapplib.app2.App2'
+
+./gradlew :app:run
+./gradlew :app2:run
+```
