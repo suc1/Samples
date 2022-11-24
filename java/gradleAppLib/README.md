@@ -106,3 +106,13 @@ mainClass = 'gradleapplib.app2.App2'
 ./gradlew :app:run
 ./gradlew :app2:run
 ```
+
+## [The Javax → Jakarta mess, and a Gradle solution](https://blog.ltgt.net/javax-jakarta-mess-and-gradle-solution/)
+1. Java EE 8, Jakarta EE 8
+2. Jakarta EE 9: javax.* -> jakarta.*
+3. 使用 Gradle，我们可以做两件事：
+   1. 声明 Java EE 和 Jakarta EE 8 实际上是同一事物，只是名称不同
+   2. 修复第三方对 Jakarta EE 8 的依赖以拒绝任何升级到 Jakarta EE 9+（Gradle 也通过 failOnVersionConflict() 具有相当于 Maven 的“依赖收敛”规则）
+4. Replace `javax.xml.bind.JAXBContext` with `jakarta.xml.bind.JAXBContext`
+
+## [java.util.ConcurrentModificationException](https://www.digitalocean.com/community/tutorials/java-util-concurrentmodificationexception)
