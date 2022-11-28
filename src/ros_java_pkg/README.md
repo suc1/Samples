@@ -71,6 +71,58 @@ cd rosjava_tutorial_right_hand_rule
 ./build/install/rosjava_tutorial_right_hand_rule/bin/rosjava_tutorial_right_hand_rule org.ros.rosjava_tutorial_right_hand_rule.RightHandRule &
 ```
 
+## 依赖rosjava开发
+1. In `ROSJAVA_CORE``build.gradle`:
+```
+apply plugin: 'application'
+mainClassName = 'org.ros.RosRun'
+dependencies {
+  compile project(':rosjava')
+}
+defaultTasks 'publish', 'installDist'
+```
+2. In other project, use `/opt/ros/kinetic/share/maven` or `~/Samples/devel/share/maven`:
+```
+apply plugin: 'application'
+mainClassName = 'org.ros.RosRun'
+dependencies {
+  compile 'org.ros.rosjava_core:rosjava:[0.1,)'
+}
+```
+
+## [Windows中运行ROS Java](https://github.com/SpyrosKou/Plain-ROS-Java-System-Example)
+1. 不需要任何 ROS 安装, JDK 17, Gradle 7.5.1, Windows Power Shell
+2. 
+```
+#DOS
+echo %JAVA_HOME%
+
+#PowerShell
+echo $Env:JAVA_HOME
+
+$env:DEBUG=1
+echo $Env:DEBUG
+```
+```
+git clone https://github.com/SpyrosKou/Plain-ROS-Java-System-Example.git
+cd .\Plain-ROS-Java-System-Example\
+.\gradlew installDist
+
+# mainClassName = "eu.spyros.koukas.ros.examples.Main"
+.\build\install\Plain-ROS-Java-System-Example\bin\Plain-ROS-Java-System-Example.bat
+.\gradlew run
+.\gradlew runWithExternalRos
+```
+
+## [在Android中使用ROS](http://community.bwbot.org/topic/627/%E5%9C%A8android%E4%B8%AD%E4%BD%BF%E7%94%A8ros)
+
+
+## [Maven](https://maven.apache.org/)
+1. make->Ant->Maven->Gradle
+2. [Maven教程](https://zhuanlan.zhihu.com/p/97830644)
+3. [Maven Tutorial - Crash Course: 26min](https://youtu.be/Xatr8AZLOsE)
+4. [Maven Full Course - Learn Maven From Scratch In 2 Hours](https://youtu.be/p0LPfK_oNCM)
+
 ## [Creating a new Java package](https://rosjava.github.io/rosjava_core/latest/getting_started.html#creating-a-new-java-package)
 1. AbstractNodeMain : NodeMain : NodeListener
 2. rosjava_tutorial_pubsub package: Talker
